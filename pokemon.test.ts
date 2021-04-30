@@ -4,19 +4,22 @@ import {FirstToAttack} from "./src";
 
 const Pikachu = new Pokemon({
     name: "Pikachu",
+    health: 100,
     speed: 100,
-    health: 100
+    type: "Electric"
 });
-const Salameche = new Pokemon({
-    name: "Salameche",
-    speed: 100,
-    health: 100
+
+const Carapuce = new Pokemon({
+    name: "Carapuce",
+    health: 100,
+    speed: 50,
+    type: "Water"
 });
 
 describe("attackFirst", () => {
 
-    test("Return the pokemon with the most hit points to attack", function () {
-        expect(FirstToAttack(Pikachu, Salameche)).toBe(Pikachu);
+    test("Return the pokemon with the most speed points to attack", function () {
+        expect(FirstToAttack(Pikachu, Carapuce)).toBe(Pikachu);
     })
 
 });
