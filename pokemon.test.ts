@@ -7,7 +7,7 @@ const Pikachu = new Pokemon({
     health: 100,
     speed: 100,
     type: "Electric",
-    power: 50
+    attack: 50
 });
 
 const Carapuce = new Pokemon({
@@ -15,13 +15,17 @@ const Carapuce = new Pokemon({
     health: 100,
     speed: 50,
     type: "Water",
-    power: 50
+    attack: 50
 });
 
 describe("attackFirst", () => {
 
     test("Return the pokemon with the most speed points to attack", function () {
         expect(FirstToAttack(Pikachu, Carapuce)).toBe(Pikachu);
-    })
+    });
+
+    test("Return the pokemon that was attacked", function () {
+        expect(Pikachu.basicAttack(Carapuce)).toBe(Carapuce);
+    });
 
 });

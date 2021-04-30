@@ -3,7 +3,7 @@ interface IPokemon{
     speed?: number;
     health: number;
     type: string;
-    power: number;
+    attack: number;
 }
 
 export class Pokemon implements IPokemon {
@@ -40,30 +40,45 @@ export class Pokemon implements IPokemon {
         this._type = value;
     }
 
-    get power(): number {
-        return this._power;
+    get attack(): number {
+        return this._attack;
     }
 
-    set power(value: number) {
-        this._power = value;
+    set attack(value: number) {
+        this._attack = value;
     }
 
     private _name: string;
     private _speed: number;
     private _health: number;
     private _type: string;
-    private _power: number;
+    private _attack: number;
 
     constructor(props: IPokemon) {
         this._name = props.name;
         this._speed = props.speed || (Math.random() * 100);
         this._health = props.health;
         this._type = props.type;
-        this._power = props.power;
+        this._attack = props.attack;
     }
 
-    attack(pokemon: Pokemon, pokemon2: Pokemon): void{
-
+    basicAttack(pokemon: Pokemon): IPokemon | null {
+        if(pokemon.health <= 0){
+            return null;
+        }
+        else{
+            pokemon.health -= this.attack + Math.round(Math.random() * 10) + 1;
+            return pokemon;
+        }
     }
+
+    isAlive():boolean{
+        return this.health > 0;
+    }
+
+
+
+
+
 }
 

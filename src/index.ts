@@ -5,14 +5,14 @@ const Pikachu = new Pokemon({
     speed: 100,
     health: 100,
     type: "Electric",
-    power: 50
+    attack: 50
 });
 
 const Carapuce = new Pokemon({
     name: "Carapuce",
     health: 100,
     type: "Water",
-    power: 50
+    attack: 50
 });
 
 export function FirstToAttack(pokemon: Pokemon , pokemon2: Pokemon): Pokemon{
