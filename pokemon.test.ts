@@ -6,14 +6,16 @@ const Pikachu = new Pokemon({
     name: "Pikachu",
     health: 100,
     speed: 100,
-    type: "Electric"
+    type: "Electric",
+    power: 50
 });
 
 const Carapuce = new Pokemon({
     name: "Carapuce",
     health: 100,
     speed: 50,
-    type: "Water"
+    type: "Water",
+    power: 50
 });
 
 describe("attackFirst", () => {
