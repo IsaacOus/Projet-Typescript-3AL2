@@ -15,8 +15,7 @@ export class Fight{
         return !this.firstPokemon.isAlive() ? this.firstPokemon : this.secondPokemon;
     }
 
-    async Fighting(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<Promise<Pokemon> | null> {
-
+    async Fighting(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<void>{
 
         const firstPokemonToAttack = FirstToAttack(firstPokemon,secondPokemon);
         const opponent:Pokemon = firstPokemonToAttack == firstPokemon ? secondPokemon : secondPokemon;
@@ -24,21 +23,21 @@ export class Fight{
         while (firstPokemon.isAlive() && secondPokemon.isAlive()){
             setTimeout(() => {
                 firstPokemonToAttack.basicAttack(opponent);
-            }, 1000);
-            setTimeout(() => {
                 opponent.basicAttack(firstPokemonToAttack);
             }, 1000);
         }
 
-        return null;
-
-
     }
 
-   /* async startFight(): Promise<Pokemon> | null{
-        if(
-        Fight();
-    }*/
+   async startFight(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<Promise<Pokemon> | null>{
+        if(firstPokemon.health <= 0 || secondPokemon.health <= 0){
+            return null;
+        }
+        await this.Fighting(firstPokemon, secondPokemon);
+
+        return this.decideWinner();
+
+    }
 
 
 }
