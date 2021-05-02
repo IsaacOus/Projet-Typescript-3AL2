@@ -24,11 +24,12 @@ const Bulbizarre = new Pokemon({
     health: 0,
     speed: 50,
     type: "Water",
-    attack: 50
+    attack: 0
 });
 
 
 const fight = new Fight(Pikachu, Carapuce);
+
 describe("attackFirst", () => {
 
     test("Return the pokemon with the most speed points to attack", function () {
@@ -39,12 +40,21 @@ describe("attackFirst", () => {
         expect(Pikachu.basicAttack(Carapuce)).toBe(Carapuce);
     });
 
+    test("Test the basic attack on a pokemon with 0 health point", function () {
+        let a = Carapuce.health;
+        expect(Carapuce.basicAttack(Bulbizarre)).toBe(null);
+    });
+
     test("Verify if a pokemon is alive", function () {
         expect(Pikachu.isAlive()).toBeTruthy();
     });
 
     test("Verify if Bulbizarre is not alive", function () {
         expect(Bulbizarre.isAlive()).toBeFalsy();
+    });
+
+    test("Start a fight with one of the two pokemon already dead", function () {
+        expect(fight.startFight(Pikachu,Bulbizarre)).resolves.toBe(null);
     });
 
     test("Return the winner of the combat", function () {

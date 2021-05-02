@@ -29,14 +29,13 @@ export class Fight{
 
     }
 
-   async startFight(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<Promise<Pokemon> | null>{
-        if(firstPokemon.health <= 0 || secondPokemon.health <= 0){
+    async startFight(firstPokemon: Pokemon, secondPokemon: Pokemon): Promise<Pokemon | null> {
+        if (firstPokemon.health <= 0 || secondPokemon.health <= 0) {
             return null;
         }
         await this.Fighting(firstPokemon, secondPokemon);
 
         return this.decideWinner();
-
     }
 
 
